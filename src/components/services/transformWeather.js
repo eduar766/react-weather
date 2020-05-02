@@ -1,12 +1,6 @@
 import convert from 'convert-units';
 import {
-    CLOUD,
-    CLOUDY,
     SUN,
-    RAIN,
-    SNOW,
-    WINDY,
-    FOG
 } from '../constants/weathers';
 
 
