@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import Location from './Location';
 import WeatherData from './WeatherData';
 import { api_weather } from './../../constants/api_url';
@@ -19,7 +20,7 @@ import {
     constructor() {
         super();
         this.state = {
-            city: "Buenos Aires",
+            city: "Santiago, cl",
             data: null
         };
         console.log('constructor');
@@ -55,7 +56,7 @@ import {
                 <Location city={city} />
                 { data ?
                     <WeatherData data={data} /> :
-                    'Cargando...' }
+                    <CircularProgress/> }
                 {/* <button onClick={this.handleUpdateClick}>Actualizar</button> */}
             </div>
         );
