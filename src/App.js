@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import LocationList from './components/LocationList';
 import './App.css';
 
@@ -11,12 +11,18 @@ const cities = [
   'Bogota,col'
 ]
 
-function App() {
-  return (
-    <div className="App">
-      <LocationList cities={cities}/>
-    </div>
-  );
+class App extends Component {
+  handleSelectedLocation = city => {
+    console.log(`handleSelectionLocation ${city}`);
+  }
+
+  render(){
+    return (
+      <div className="App">
+        <LocationList cities={cities} onSelectedLocation={this.handleSelectedLocation} />
+      </div>
+    );
+  }
 }
 
 export default App;

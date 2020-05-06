@@ -22,16 +22,14 @@ import transformWeather from './../services/transformWeather';
             city,
             data: null
         };
-        console.log('constructor');
+
     }
 
     componentDidMount() {
         this.handleUpdateClick();
-        console.log('componentDidMount');
     }
 
     componentDidUpdate(prevProps, prevState) {
-        console.log('componentDidUpdate');
     }
 
     handleUpdateClick = () => {
@@ -40,7 +38,6 @@ import transformWeather from './../services/transformWeather';
             return resolve.json();
         }).then( data => {
             const newWeather = transformWeather(data);
-            console.log(newWeather);
             this.setState({
                 data: newWeather
             })
@@ -49,10 +46,10 @@ import transformWeather from './../services/transformWeather';
     };
 
     render() {
-        console.log('render');
+        const { onWeatherLocationClick } = this.props;
         const {city, data } = this.state;
         return (
-            <div className="weatherLocationCont">
+            <div className="weatherLocationCont" onClick={onWeatherLocationClick} >
                 <Location city={city}/>
                 { data ?
                     <WeatherData data={data} /> :
@@ -65,6 +62,7 @@ import transformWeather from './../services/transformWeather';
 
 WeatherLocation.propTypes = {
     city: PropTypes.string.isRequired,
+    onWeatherLocationClick: PropTypes.func,
 }
 
 export default WeatherLocation;
